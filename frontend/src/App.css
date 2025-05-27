@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/* Optional: Add to your CSS for better browser support */
+@supports (scroll-snap-type: y mandatory) {
+      .snap-container {
+            scroll-snap-type: y mandatory;
+      }
+      .snap-section {
+            scroll-snap-align: start;
+      }
+}
+
+body {
+      font-family: "Poppins", sans-serif;
+}
