@@ -161,3 +161,28 @@ The API returns standardized error responses with appropriate HTTP status codes:
 - Enhanced reporting and visualization
 - Multi-user budget sharing
 
+---
+
+## My Contributions
+
+- Designed and implemented RESTful backend APIs using Express.js
+- Implemented JWT-based authentication and role-based route protection
+- Designed relational schema using Prisma ORM and MySQL
+- Integrated Google Gemini API for AI-powered receipt scanning and financial insights
+- Implemented secure password hashing using Bcrypt
+- Structured error handling and middleware architecture
+- Deployed frontend via Vercel
+
+---
+
+## Backend Architecture Overview
+
+The backend follows a modular MVC-inspired structure:
+
+- **Routes Layer** → Handles API endpoint definitions
+- **Controllers Layer** → Business logic and request handling
+- **Prisma ORM Layer** → Database abstraction and schema management
+- **Middleware Layer** → Authentication, error handling, and file uploads
+
+This separation ensures maintainability, scalability, and clear responsibility boundaries.
+
