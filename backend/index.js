@@ -1,12 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import morgan from "morgan";
 import { PrismaClient } from "@prisma/client";
 import authRoutes from "./routes/authRoutes.js";
 import budgetRoutes from "./routes/budgetRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js";
 
 const app = express();
+app.use(morgan("dev"));
 const prisma = new PrismaClient();
 
 const allowedOrigins = [
