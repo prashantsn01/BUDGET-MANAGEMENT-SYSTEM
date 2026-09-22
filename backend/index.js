@@ -11,27 +11,30 @@ dotenv.config();
 
 const app = express();
 app.use(morgan("dev"));
+
 const prisma = new PrismaClient();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://budget-management-awin.vercel.app"
+  "https://budget-management-system-ashen.vercel.app"
 ];
 
-app.use(cors({ 
-  origin: function(origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true 
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true
+  })
+);
 
 app.use(express.json());
 
-//routes
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/budget", budgetRoutes);
 app.use("/api/transaction", transactionRoutes);
@@ -39,17 +42,20 @@ app.use("/api/transaction", transactionRoutes);
 const PORT = process.env.PORT || 5000;
 
 async function startServer() {
-      try {
-            await prisma.$connect();
-            console.log("Successfully connected to the database!");
+  try {
+    await prisma.$connect();
+    console.log("Successfully connected to the database!");
 
-            app.listen(PORT, () => {
-                  console.log(`Server running on port ${PORT}`);
-            });
-      } catch (error) {
-            console.error("Error connecting to the database:", error.message);
-            process.exit(1);
-      }
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error(
+      "Error connecting to the database:",
+      error.message
+    );
+    process.exit(1);
+  }
 }
 
 startServer();
